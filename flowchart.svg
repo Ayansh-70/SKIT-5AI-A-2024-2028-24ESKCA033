@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1560" width="1240" height="1560">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 30px; font-weight: 800; fill: #0F172A; }
+      .subtitle { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 500; fill: #475569; }
+      .term-text { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 20px; font-weight: 800; fill: #0F172A; letter-spacing: 1px; }
+      .box-title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 19px; font-weight: 700; fill: #0F172A; }
+      .box-desc { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 500; fill: #475569; }
+      .box-desc-bold { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 600; fill: #1E3A8A; }
+      .diamond-title { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 18px; font-weight: 800; fill: #78350F; }
+      .diamond-desc { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #92400E; }
+      .role-hdr { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 17px; font-weight: 800; fill: #FFFFFF; letter-spacing: 0.5px; }
+      .role-dash { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: 700; }
+      .role-item { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 13.5px; font-weight: 500; fill: #1E293B; }
+      .edge-label { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 800; }
+      .stage-pill { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 11.5px; font-weight: 800; letter-spacing: 0.5px; }
+    </style>
+
+    <!-- Markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#DC2626" />
+    </marker>
+
+    <!-- Clean Shadow Filter -->
+    <filter id="boxShadow" x="-3%" y="-4%" width="106%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+
+  <!-- Clean Canvas -->
+  <rect width="1240" height="1560" fill="#FFFFFF"/>
+
+  <!-- ==================== HEADER ==================== -->
+  <g id="header-block">
+    <text x="600" y="52" text-anchor="middle" class="title">AlumniConnect — System Workflow Flowchart</text>
+    <text x="600" y="80" text-anchor="middle" class="subtitle">End-to-End Execution Flow: Authentication, Role-Based Access Control, and Database Operations</text>
+    <line x1="80" y1="98" x2="1140" y2="98" stroke="#E2E8F0" stroke-width="1.8" />
+  </g>
+
+  <!-- ==================== 1. START ==================== -->
+  <g id="node-start" filter="url(#boxShadow)">
+    <rect x="510" y="118" width="180" height="46" rx="23" fill="#F8FAFC" stroke="#334155" stroke-width="2.2"/>
+    <text x="600" y="147" text-anchor="middle" class="term-text">START</text>
+  </g>
+
+  <!-- Arrow: Start -> Open App -->
+  <line x1="600" y1="164" x2="600" y2="200" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 2. OPEN APPLICATION ==================== -->
+  <g id="node-open-app" filter="url(#boxShadow)">
+    <rect x="340" y="202" width="520" height="66" rx="8" fill="#FFFFFF" stroke="#475569" stroke-width="1.8"/>
+    <text x="600" y="230" text-anchor="middle" class="box-title">Open AlumniConnect Web Application</text>
+    <text x="600" y="253" text-anchor="middle" class="box-desc">Single Page Application (React 18 + Vite + Tailwind CSS)</text>
+  </g>
+
+  <!-- Arrow: Open App -> Login/Register -->
+  <line x1="600" y1="268" x2="600" y2="306" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 3. LOGIN / REGISTER ==================== -->
+  <g id="node-portal" filter="url(#boxShadow)">
+    <rect x="310" y="308" width="580" height="68" rx="8" fill="#F8FAFC" stroke="#2563EB" stroke-width="1.8"/>
+    <text x="600" y="336" text-anchor="middle" class="box-title" fill="#1E3A8A">User Login / Registration Portal</text>
+    <text x="600" y="360" text-anchor="middle" class="box-desc-bold">User Login (Email &amp; Password)  |  New Institute Registration Request</text>
+  </g>
+
+  <!-- Arrow: Login/Register -> Verification -->
+  <line x1="600" y1="376" x2="600" y2="414" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 4. AUTHENTICATION & VERIFICATION ==================== -->
+  <g id="node-auth-verify" filter="url(#boxShadow)">
+    <rect x="290" y="416" width="620" height="70" rx="8" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.8"/>
+    <text x="600" y="444" text-anchor="middle" class="box-title" fill="#1E3A8A">Authentication &amp; Token Verification</text>
+    <text x="600" y="468" text-anchor="middle" class="box-desc" fill="#1E40AF">Bcrypt Password Verification  •  JWT Token Generation  •  Account Status: ACTIVE</text>
+  </g>
+
+  <!-- Arrow: Verification -> Role Diamond -->
+  <line x1="600" y1="486" x2="600" y2="520" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 5. IDENTIFY ROLE (DECISION DIAMOND) ==================== -->
+  <g id="node-role-diamond" filter="url(#boxShadow)">
+    <polygon points="600,522 770,568 600,614 430,568" fill="#FEF3C7" stroke="#D97706" stroke-width="2.2"/>
+    <text x="600" y="562" text-anchor="middle" class="diamond-title">Identify User Role</text>
+    <text x="600" y="583" text-anchor="middle" class="diamond-desc">Role-Based Access Control (RBAC)</text>
+  </g>
+
+  <!-- ==================== 3-ROLE BRANCHING BUS ==================== -->
+  <!-- Stem from diamond to bus -->
+  <line x1="600" y1="614" x2="600" y2="638" stroke="#334155" stroke-width="2.2"/>
+  <!-- Horizontal distribution bus spanning 3 columns -->
+  <line x1="230" y1="638" x2="970" y2="638" stroke="#334155" stroke-width="2.2"/>
+
+  <!-- Drop arrows into 3 cards -->
+  <line x1="230" y1="638" x2="230" y2="644" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="638" x2="600" y2="644" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="970" y1="638" x2="970" y2="644" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 6. ROLE CARDS (3 PRIMARY ROLES) ==================== -->
+
+  <!-- CARD 1: STUDENT -->
+  <g id="card-student" filter="url(#boxShadow)">
+    <rect x="70" y="646" width="320" height="220" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="2"/>
+    <path d="M 70 654 A 8 8 0 0 1 78 646 L 382 646 A 8 8 0 0 1 390 654 L 390 688 L 70 688 Z" fill="#2563EB" />
+    <text x="230" y="674" text-anchor="middle" class="role-hdr">STUDENT</text>
+    
+    <rect x="110" y="698" width="240" height="26" rx="5" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="230" y="716" text-anchor="middle" class="role-dash" fill="#1E40AF">Student Dashboard</text>
+    
+    <line x1="95" y1="734" x2="365" y2="734" stroke="#E2E8F0" stroke-width="1"/>
+
+    <text x="100" y="764" class="role-item">• Search Verified Alumni Directory</text>
+    <text x="100" y="796" class="role-item">• Send Mentorship &amp; Guidance Requests</text>
+    <text x="100" y="828" class="role-item">• Browse Approved Jobs &amp; Campus Events</text>
+  </g>
+
+  <!-- CARD 2: ALUMNI -->
+  <g id="card-alumni" filter="url(#boxShadow)">
+    <rect x="440" y="646" width="320" height="220" rx="8" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+    <path d="M 440 654 A 8 8 0 0 1 448 646 L 752 646 A 8 8 0 0 1 760 654 L 760 688 L 440 688 Z" fill="#0D9488" />
+    <text x="600" y="674" text-anchor="middle" class="role-hdr">ALUMNI</text>
+    
+    <rect x="480" y="698" width="240" height="26" rx="5" fill="#F0FDFA" stroke="#99F6E4" stroke-width="1"/>
+    <text x="600" y="716" text-anchor="middle" class="role-dash" fill="#115E59">Alumni Dashboard</text>
+    
+    <line x1="465" y1="734" x2="735" y2="734" stroke="#E2E8F0" stroke-width="1"/>
+
+    <text x="470" y="764" class="role-item">• Complete &amp; Update Verified Profile</text>
+    <text x="470" y="796" class="role-item">• Accept Guidance &amp; Referral Requests</text>
+    <text x="470" y="828" class="role-item">• Post Job &amp; Internship Opportunities</text>
+  </g>
+
+  <!-- CARD 3: INSTITUTE ADMIN -->
+  <g id="card-admin" filter="url(#boxShadow)">
+    <rect x="810" y="646" width="320" height="220" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="2"/>
+    <path d="M 810 654 A 8 8 0 0 1 818 646 L 1122 646 A 8 8 0 0 1 1130 654 L 1130 688 L 810 688 Z" fill="#7C3AED" />
+    <text x="970" y="674" text-anchor="middle" class="role-hdr">INSTITUTE ADMIN</text>
+    
+    <rect x="850" y="698" width="240" height="26" rx="5" fill="#FAF5FF" stroke="#DDD6FE" stroke-width="1"/>
+    <text x="970" y="716" text-anchor="middle" class="role-dash" fill="#581C87">Admin Dashboard</text>
+    
+    <line x1="835" y1="734" x2="1105" y2="734" stroke="#E2E8F0" stroke-width="1"/>
+
+    <text x="840" y="764" class="role-item">• Manage Student &amp; Alumni Accounts</text>
+    <text x="840" y="796" class="role-item">• Verify Pending Alumni Registrations</text>
+    <text x="840" y="828" class="role-item">• Approve Opportunities &amp; Campus Events</text>
+  </g>
+
+  <!-- ==================== CONVERGENCE BUS ==================== -->
+  <line x1="230" y1="866" x2="230" y2="896" stroke="#334155" stroke-width="2.2"/>
+  <line x1="600" y1="866" x2="600" y2="896" stroke="#334155" stroke-width="2.2"/>
+  <line x1="970" y1="866" x2="970" y2="896" stroke="#334155" stroke-width="2.2"/>
+  
+  <line x1="230" y1="896" x2="970" y2="896" stroke="#334155" stroke-width="2.2"/>
+  <line x1="600" y1="896" x2="600" y2="934" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 7. BACKEND REST API ==================== -->
+  <g id="node-api" filter="url(#boxShadow)">
+    <rect x="290" y="936" width="620" height="70" rx="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.8"/>
+    <text x="600" y="964" text-anchor="middle" class="box-title" fill="#14532D">Backend REST API &amp; Security Middleware</text>
+    <text x="600" y="988" text-anchor="middle" class="box-desc" fill="#15803D">Express Router  •  JWT Auth Guard (protect)  •  Institute Data Isolation</text>
+  </g>
+
+  <!-- Arrow: REST API -> MongoDB -->
+  <line x1="600" y1="1006" x2="600" y2="1042" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 8. MONGODB DATABASE ==================== -->
+  <g id="node-db" filter="url(#boxShadow)">
+    <rect x="290" y="1044" width="620" height="70" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.8"/>
+    <text x="600" y="1072" text-anchor="middle" class="box-title" fill="#115E59">MongoDB Database Operations (Mongoose ODM)</text>
+    <text x="600" y="1096" text-anchor="middle" class="box-desc" fill="#0F766E">Atomic CRUD Operations on Users, Profiles, Requests &amp; Opportunities</text>
+  </g>
+
+  <!-- Arrow: MongoDB -> Response & UI -->
+  <line x1="600" y1="1114" x2="600" y2="1150" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 9. RESPONSE & UI UPDATE ==================== -->
+  <g id="node-response-ui" filter="url(#boxShadow)">
+    <rect x="290" y="1152" width="620" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+    <text x="600" y="1180" text-anchor="middle" class="box-title" fill="#1E3A8A">Standard JSON Response &amp; UI Synchronization</text>
+    <text x="600" y="1204" text-anchor="middle" class="box-desc" fill="#1D4ED8">React State &amp; AuthContext Updated  •  Dynamic View Re-rendered</text>
+  </g>
+
+  <!-- Arrow: UI -> Decision Diamond -->
+  <line x1="600" y1="1222" x2="600" y2="1258" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 10. DECISION: CONTINUE SESSION? ==================== -->
+  <g id="node-session-diamond" filter="url(#boxShadow)">
+    <polygon points="600,1260 770,1304 600,1348 430,1304" fill="#FEF3C7" stroke="#D97706" stroke-width="2.2"/>
+    <text x="600" y="1298" text-anchor="middle" class="diamond-title">Continue Session?</text>
+    <text x="600" y="1319" text-anchor="middle" class="diamond-desc">Next Action or Logout</text>
+  </g>
+
+  <!-- ==================== LOOPBACK PATH (YES) ==================== -->
+  <path d="M 770 1304 L 1175 1304 L 1175 568 L 772 568" fill="none" stroke="#059669" stroke-width="2.6" stroke-dasharray="7 5" marker-end="url(#arrow-green)"/>
+  
+  <rect x="785" y="1284" width="60" height="24" rx="5" fill="#ECFDF5" stroke="#10B981" stroke-width="1.2"/>
+  <text x="815" y="1301" text-anchor="middle" class="edge-label" fill="#047857">YES</text>
+
+  <!-- Midpoint label badge -->
+  <g transform="translate(1175, 806)">
+    <rect x="-65" y="-18" width="130" height="36" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+    <text x="0" y="-2" text-anchor="middle" font-size="12" font-weight="800" fill="#047857">NEXT ACTION</text>
+    <text x="0" y="13" text-anchor="middle" font-size="11" font-weight="600" fill="#065F46">Loop to Dashboard</text>
+  </g>
+
+  <!-- ==================== LOGOUT PATH (NO) ==================== -->
+  <line x1="600" y1="1348" x2="600" y2="1400" stroke="#DC2626" stroke-width="2.2" marker-end="url(#arrow-red)"/>
+  <rect x="612" y="1360" width="110" height="24" rx="5" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="667" y="1377" text-anchor="middle" class="edge-label" fill="#DC2626">NO (Logout)</text>
+
+  <!-- ==================== 11. LOGOUT & TERMINATION ==================== -->
+  <g id="node-logout" filter="url(#boxShadow)">
+    <rect x="360" y="1402" width="480" height="62" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+    <text x="600" y="1428" text-anchor="middle" class="box-title" fill="#991B1B">User Logout &amp; Session Termination</text>
+    <text x="600" y="1450" text-anchor="middle" class="box-desc" fill="#B91C1C">JWT Token Cleared  •  Redirected to Landing Page</text>
+  </g>
+
+  <!-- Arrow: Logout -> End -->
+  <line x1="600" y1="1464" x2="600" y2="1496" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== 12. END ==================== -->
+  <g id="node-end" filter="url(#boxShadow)">
+    <rect x="510" y="1498" width="180" height="46" rx="23" fill="#F8FAFC" stroke="#334155" stroke-width="2.2"/>
+    <text x="600" y="1527" text-anchor="middle" class="term-text">END</text>
+  </g>
+
+</svg>

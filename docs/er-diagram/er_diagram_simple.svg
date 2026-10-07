@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 1680" width="2200" height="1680" style="background-color: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrowDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1E293B" />
+    </marker>
+  </defs>
+
+  <!-- Pure White Canvas Background -->
+  <rect width="2200" height="1680" fill="#FFFFFF"/>
+
+  <!-- ==================== REPORT HEADER ==================== -->
+  <g id="headerBanner" transform="translate(160, 45)">
+    <rect x="0" y="0" width="1880" height="76" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.6"/>
+    <rect x="0" y="0" width="8" height="76" rx="4" fill="#1E3A8A"/>
+    <text x="32" y="34" font-size="25" font-weight="800" fill="#0F172A" letter-spacing="-0.3">Entity Relationship Diagram - AlumniConnect</text>
+    <text x="32" y="60" font-size="14.5" font-weight="500" fill="#475569">Core Database Schema • Institute-Based Alumni-Student Networking System • B.Tech Project Report Architecture</text>
+    
+    <rect x="1560" y="16" width="290" height="44" rx="4" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.2"/>
+    <text x="1575" y="36" font-size="12" font-weight="700" fill="#1E40AF">VIVA &amp; REPORT READY</text>
+    <text x="1575" y="51" font-size="11" font-weight="500" fill="#3B82F6">Essential Entities &amp; Verified Mongoose Schemas</text>
+  </g>
+
+  <!-- ==================== RELATIONSHIP LINES & LABELS ==================== -->
+  <g id="relationshipLines">
+    <!-- Relationship: rel_inst_user -->
+    <path d="M 800 290 L 930 290" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 1270 290 L 1400 290" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowDark)"/>
+    <g transform="translate(1100, 290)">
+      <rect x="-125" y="-17" width="250" height="34" rx="17" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      <text x="0" y="5.5" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">hosts &amp; manages users (1 : N)</text>
+      <!-- Source Cardinality -->
+      <circle cx="-140" cy="0" r="12" fill="#0F172A"/>
+      <text x="-140" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+      <!-- Target Cardinality -->
+      <circle cx="140" cy="0" r="12" fill="#1E3A8A"/>
+      <text x="140" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">0..N</text>
+    </g>
+
+    <!-- Relationship: rel_inst_student -->
+    <path d="M 480 484 L 480 538" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 480 596 L 480 650" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowDark)"/>
+    <g transform="translate(480, 567)">
+      <rect x="-120" y="-17" width="240" height="34" rx="17" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      <text x="0" y="5.5" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">enrolled in institute (1 : N)</text>
+      <!-- Source Cardinality -->
+      <circle cx="-135" cy="0" r="12" fill="#0F172A"/>
+      <text x="-135" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+      <!-- Target Cardinality -->
+      <circle cx="135" cy="0" r="12" fill="#1E3A8A"/>
+      <text x="135" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">0..N</text>
+    </g>
+
+    <!-- Relationship: rel_user_alumni -->
+    <path d="M 1720 520 L 1720 556" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 1720 614 L 1720 650" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowDark)"/>
+    <g transform="translate(1720, 585)">
+      <rect x="-115" y="-17" width="230" height="34" rx="17" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      <text x="0" y="5.5" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">has alumni profile (1 : 1)</text>
+      <!-- Source Cardinality -->
+      <circle cx="-130" cy="0" r="12" fill="#0F172A"/>
+      <text x="-130" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+      <!-- Target Cardinality -->
+      <circle cx="130" cy="0" r="12" fill="#1E3A8A"/>
+      <text x="130" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">0..1</text>
+    </g>
+
+    <!-- Relationship: rel_user_student -->
+    <path d="M 1400 420 L 1100 420 L 1100 546" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 1100 604 L 1100 730 L 800 730" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowDark)"/>
+    <g transform="translate(1100, 575)">
+      <rect x="-120" y="-17" width="240" height="34" rx="17" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      <text x="0" y="5.5" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">has student profile (1 : 1)</text>
+      <!-- Source Cardinality -->
+      <circle cx="-135" cy="0" r="12" fill="#0F172A"/>
+      <text x="-135" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+      <!-- Target Cardinality -->
+      <circle cx="135" cy="0" r="12" fill="#1E3A8A"/>
+      <text x="135" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">0..1</text>
+    </g>
+
+    <!-- Relationship: rel_student_connection -->
+    <path d="M 480 984 L 480 1038" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 480 1096 L 480 1150" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowDark)"/>
+    <g transform="translate(480, 1067)">
+      <rect x="-130" y="-17" width="260" height="34" rx="17" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      <text x="0" y="5.5" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">sends request as student (1 : N)</text>
+      <!-- Source Cardinality -->
+      <circle cx="-145" cy="0" r="12" fill="#0F172A"/>
+      <text x="-145" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+      <!-- Target Cardinality -->
+      <circle cx="145" cy="0" r="12" fill="#1E3A8A"/>
+      <text x="145" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">0..N</text>
+    </g>
+
+    <!-- Relationship: rel_alumni_opportunity -->
+    <path d="M 1720 1020 L 1720 1056" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 1720 1114 L 1720 1150" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowDark)"/>
+    <g transform="translate(1720, 1085)">
+      <rect x="-130" y="-17" width="260" height="34" rx="17" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      <text x="0" y="5.5" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">posts career opportunity (1 : N)</text>
+      <!-- Source Cardinality -->
+      <circle cx="-145" cy="0" r="12" fill="#0F172A"/>
+      <text x="-145" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+      <!-- Target Cardinality -->
+      <circle cx="145" cy="0" r="12" fill="#1E3A8A"/>
+      <text x="145" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">0..N</text>
+    </g>
+
+    <!-- Relationship: rel_alumni_connection -->
+    <path d="M 1400 860 L 1100 860 L 1100 1020" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 1100 1080 L 1100 1240 L 800 1240" fill="none" stroke="#334155" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowDark)"/>
+    <g transform="translate(1100, 1050)">
+      <rect x="-150" y="-17" width="300" height="34" rx="17" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      <text x="0" y="5.5" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">receives &amp; responds to request (1 : N)</text>
+      <!-- Source Cardinality -->
+      <circle cx="-165" cy="0" r="12" fill="#0F172A"/>
+      <text x="-165" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+      <!-- Target Cardinality -->
+      <circle cx="165" cy="0" r="12" fill="#1E3A8A"/>
+      <text x="165" y="4.5" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">0..N</text>
+    </g>
+
+  </g>
+
+  <!-- ==================== ENTITY TABLES ==================== -->
+  <g id="entityTables">
+
+    <!-- Entity Card: Institute -->
+    <g id="entity_Institute" transform="translate(160, 150)">
+      <!-- Container Box -->
+      <rect x="0" y="0" width="640" height="334" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      
+      <!-- Card Title Bar -->
+      <path d="M 0 6 Q 0 0 6 0 L 634 0 Q 640 0 640 6 L 640 66 L 0 66 Z" fill="#1E3A8A" />
+      <text x="22" y="34" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">INSTITUTE</text>
+      <text x="22" y="54" font-size="12.5" font-weight="500" fill="#E2E8F0" opacity="0.95">Tenant Organization & Campus Authority • [institutes]</text>
+
+      <!-- Table Column Headers -->
+      <rect x="0" y="66" width="640" height="36" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="20" y="89" font-size="12" font-weight="700" fill="#334155">KEY</text>
+      <text x="95" y="89" font-size="12" font-weight="700" fill="#334155">ATTRIBUTE NAME</text>
+      <text x="320" y="89" font-size="12" font-weight="700" fill="#334155">DATA TYPE</text>
+      <text x="440" y="89" font-size="12" font-weight="700" fill="#334155">CONSTRAINTS / NOTES</text>
+
+      <!-- Attributes Rows -->
+      <g id="row_Institute__id">
+        <rect x="0" y="102" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="138" x2="640" y2="138" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="16" y="109" width="32" height="22" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.2"/>
+        <text x="32" y="124" font-size="11" font-weight="800" fill="#92400E" text-anchor="middle">PK</text>
+        <text x="95" y="125" font-size="14.5" font-weight="700" fill="#0F172A">_id</text>
+        <text x="320" y="125" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="125" font-size="13" font-weight="500" fill="#475569">Primary Key</text>
+      </g>
+      <g id="row_Institute_name">
+        <rect x="0" y="138" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="174" x2="640" y2="174" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="161" font-size="14.5" font-weight="600" fill="#1E293B">name</text>
+        <text x="320" y="161" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="161" font-size="13" font-weight="500" fill="#475569">Official Institute Name</text>
+      </g>
+      <g id="row_Institute_email">
+        <rect x="0" y="174" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="210" x2="640" y2="210" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="16" y="181" width="32" height="22" rx="4" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.2"/>
+        <text x="32" y="196" font-size="11" font-weight="800" fill="#166534" text-anchor="middle">UQ</text>
+        <text x="95" y="197" font-size="14.5" font-weight="700" fill="#0F172A">email</text>
+        <text x="320" y="197" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="197" font-size="13" font-weight="500" fill="#475569">Official Domain Email</text>
+      </g>
+      <g id="row_Institute_phone">
+        <rect x="0" y="210" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="246" x2="640" y2="246" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="233" font-size="14.5" font-weight="600" fill="#1E293B">phone</text>
+        <text x="320" y="233" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="233" font-size="13" font-weight="500" fill="#475569">Contact Phone Number</text>
+      </g>
+      <g id="row_Institute_city__state">
+        <rect x="0" y="246" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="282" x2="640" y2="282" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="269" font-size="14.5" font-weight="600" fill="#1E293B">city, state</text>
+        <text x="320" y="269" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="269" font-size="13" font-weight="500" fill="#475569">Geographic Campus Location</text>
+      </g>
+      <g id="row_Institute_status">
+        <rect x="0" y="282" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="318" x2="640" y2="318" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="305" font-size="14.5" font-weight="600" fill="#1E293B">status</text>
+        <text x="320" y="305" font-size="13.5" font-weight="600" fill="#0369A1">Enum</text>
+        <text x="440" y="305" font-size="13" font-weight="500" fill="#475569">PENDING | APPROVED | REJECTED</text>
+      </g>
+    </g>
+
+    <!-- Entity Card: User -->
+    <g id="entity_User" transform="translate(1400, 150)">
+      <!-- Container Box -->
+      <rect x="0" y="0" width="640" height="370" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      
+      <!-- Card Title Bar -->
+      <path d="M 0 6 Q 0 0 6 0 L 634 0 Q 640 0 640 6 L 640 66 L 0 66 Z" fill="#0F766E" />
+      <text x="22" y="34" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">USER</text>
+      <text x="22" y="54" font-size="12.5" font-weight="500" fill="#E2E8F0" opacity="0.95">Core Authentication & RBAC Account • [users]</text>
+
+      <!-- Table Column Headers -->
+      <rect x="0" y="66" width="640" height="36" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="20" y="89" font-size="12" font-weight="700" fill="#334155">KEY</text>
+      <text x="95" y="89" font-size="12" font-weight="700" fill="#334155">ATTRIBUTE NAME</text>
+      <text x="320" y="89" font-size="12" font-weight="700" fill="#334155">DATA TYPE</text>
+      <text x="440" y="89" font-size="12" font-weight="700" fill="#334155">CONSTRAINTS / NOTES</text>
+
+      <!-- Attributes Rows -->
+      <g id="row_User__id">
+        <rect x="0" y="102" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="138" x2="640" y2="138" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="16" y="109" width="32" height="22" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.2"/>
+        <text x="32" y="124" font-size="11" font-weight="800" fill="#92400E" text-anchor="middle">PK</text>
+        <text x="95" y="125" font-size="14.5" font-weight="700" fill="#0F172A">_id</text>
+        <text x="320" y="125" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="125" font-size="13" font-weight="500" fill="#475569">Primary Key</text>
+      </g>
+      <g id="row_User_institute">
+        <rect x="0" y="138" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="174" x2="640" y2="174" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="145" width="32" height="22" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+        <text x="30" y="160" font-size="10.5" font-weight="800" fill="#1E40AF" text-anchor="middle">FK</text>
+        <text x="95" y="161" font-size="14.5" font-weight="700" fill="#0F172A">institute</text>
+        <text x="320" y="161" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="161" font-size="13" font-weight="500" fill="#475569">Ref -> Institute (Tenancy Scoping)</text>
+      </g>
+      <g id="row_User_email">
+        <rect x="0" y="174" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="210" x2="640" y2="210" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="16" y="181" width="32" height="22" rx="4" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.2"/>
+        <text x="32" y="196" font-size="11" font-weight="800" fill="#166534" text-anchor="middle">UQ</text>
+        <text x="95" y="197" font-size="14.5" font-weight="700" fill="#0F172A">email</text>
+        <text x="320" y="197" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="197" font-size="13" font-weight="500" fill="#475569">Unique Login Email</text>
+      </g>
+      <g id="row_User_name">
+        <rect x="0" y="210" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="246" x2="640" y2="246" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="233" font-size="14.5" font-weight="600" fill="#1E293B">name</text>
+        <text x="320" y="233" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="233" font-size="13" font-weight="500" fill="#475569">Registered Full Name</text>
+      </g>
+      <g id="row_User_role">
+        <rect x="0" y="246" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="282" x2="640" y2="282" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="269" font-size="14.5" font-weight="600" fill="#1E293B">role</text>
+        <text x="320" y="269" font-size="13.5" font-weight="600" fill="#0369A1">Enum</text>
+        <text x="440" y="269" font-size="13" font-weight="500" fill="#475569">STUDENT | ALUMNI | INSTITUTE_ADMIN</text>
+      </g>
+      <g id="row_User_password">
+        <rect x="0" y="282" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="318" x2="640" y2="318" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="305" font-size="14.5" font-weight="600" fill="#1E293B">password</text>
+        <text x="320" y="305" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="305" font-size="13" font-weight="500" fill="#475569">Bcrypt Hashed (Salt rounds: 10)</text>
+      </g>
+      <g id="row_User_status">
+        <rect x="0" y="318" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="354" x2="640" y2="354" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="341" font-size="14.5" font-weight="600" fill="#1E293B">status</text>
+        <text x="320" y="341" font-size="13.5" font-weight="600" fill="#0369A1">Enum</text>
+        <text x="440" y="341" font-size="13" font-weight="500" fill="#475569">ACTIVE | PENDING | BLOCKED</text>
+      </g>
+    </g>
+
+    <!-- Entity Card: StudentProfile -->
+    <g id="entity_StudentProfile" transform="translate(160, 650)">
+      <!-- Container Box -->
+      <rect x="0" y="0" width="640" height="334" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      
+      <!-- Card Title Bar -->
+      <path d="M 0 6 Q 0 0 6 0 L 634 0 Q 640 0 640 6 L 640 66 L 0 66 Z" fill="#0369A1" />
+      <text x="22" y="34" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">STUDENT_PROFILE</text>
+      <text x="22" y="54" font-size="12.5" font-weight="500" fill="#E2E8F0" opacity="0.95">Academic Profile & Skill Portfolio • [studentprofiles]</text>
+
+      <!-- Table Column Headers -->
+      <rect x="0" y="66" width="640" height="36" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="20" y="89" font-size="12" font-weight="700" fill="#334155">KEY</text>
+      <text x="95" y="89" font-size="12" font-weight="700" fill="#334155">ATTRIBUTE NAME</text>
+      <text x="320" y="89" font-size="12" font-weight="700" fill="#334155">DATA TYPE</text>
+      <text x="440" y="89" font-size="12" font-weight="700" fill="#334155">CONSTRAINTS / NOTES</text>
+
+      <!-- Attributes Rows -->
+      <g id="row_StudentProfile__id">
+        <rect x="0" y="102" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="138" x2="640" y2="138" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="16" y="109" width="32" height="22" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.2"/>
+        <text x="32" y="124" font-size="11" font-weight="800" fill="#92400E" text-anchor="middle">PK</text>
+        <text x="95" y="125" font-size="14.5" font-weight="700" fill="#0F172A">_id</text>
+        <text x="320" y="125" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="125" font-size="13" font-weight="500" fill="#475569">Primary Key</text>
+      </g>
+      <g id="row_StudentProfile_user">
+        <rect x="0" y="138" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="174" x2="640" y2="174" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="145" width="56" height="22" rx="4" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.2"/>
+        <text x="42" y="160" font-size="10.5" font-weight="800" fill="#5B21B6" text-anchor="middle">FK/UQ</text>
+        <text x="95" y="161" font-size="14.5" font-weight="700" fill="#0F172A">user</text>
+        <text x="320" y="161" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="161" font-size="13" font-weight="500" fill="#475569">Ref -> User (Student Role, 1:1)</text>
+      </g>
+      <g id="row_StudentProfile_institute">
+        <rect x="0" y="174" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="210" x2="640" y2="210" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="181" width="32" height="22" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+        <text x="30" y="196" font-size="10.5" font-weight="800" fill="#1E40AF" text-anchor="middle">FK</text>
+        <text x="95" y="197" font-size="14.5" font-weight="700" fill="#0F172A">institute</text>
+        <text x="320" y="197" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="197" font-size="13" font-weight="500" fill="#475569">Ref -> Institute (Tenancy)</text>
+      </g>
+      <g id="row_StudentProfile_rollNumber">
+        <rect x="0" y="210" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="246" x2="640" y2="246" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="15" y="217" width="34" height="22" rx="4" fill="#E2E8F0" stroke="#475569" stroke-width="1.2"/>
+        <text x="32" y="232" font-size="10.5" font-weight="800" fill="#1E293B" text-anchor="middle">IDX</text>
+        <text x="95" y="233" font-size="14.5" font-weight="700" fill="#0F172A">rollNumber</text>
+        <text x="320" y="233" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="233" font-size="13" font-weight="500" fill="#475569">Institutional Enrollment ID</text>
+      </g>
+      <g id="row_StudentProfile_branch__batch">
+        <rect x="0" y="246" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="282" x2="640" y2="282" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="269" font-size="14.5" font-weight="600" fill="#1E293B">branch, batch</text>
+        <text x="320" y="269" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="269" font-size="13" font-weight="500" fill="#475569">Department & Graduation Year</text>
+      </g>
+      <g id="row_StudentProfile_skills">
+        <rect x="0" y="282" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="318" x2="640" y2="318" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="305" font-size="14.5" font-weight="600" fill="#1E293B">skills</text>
+        <text x="320" y="305" font-size="13.5" font-weight="600" fill="#0369A1">Array[String]</text>
+        <text x="440" y="305" font-size="13" font-weight="500" fill="#475569">Technical & Domain Competencies</text>
+      </g>
+    </g>
+
+    <!-- Entity Card: AlumniProfile -->
+    <g id="entity_AlumniProfile" transform="translate(1400, 650)">
+      <!-- Container Box -->
+      <rect x="0" y="0" width="640" height="370" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      
+      <!-- Card Title Bar -->
+      <path d="M 0 6 Q 0 0 6 0 L 634 0 Q 640 0 640 6 L 640 66 L 0 66 Z" fill="#3730A3" />
+      <text x="22" y="34" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">ALUMNI_PROFILE</text>
+      <text x="22" y="54" font-size="12.5" font-weight="500" fill="#E2E8F0" opacity="0.95">Career Profile & Verified Credentials • [alumniprofiles]</text>
+
+      <!-- Table Column Headers -->
+      <rect x="0" y="66" width="640" height="36" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="20" y="89" font-size="12" font-weight="700" fill="#334155">KEY</text>
+      <text x="95" y="89" font-size="12" font-weight="700" fill="#334155">ATTRIBUTE NAME</text>
+      <text x="320" y="89" font-size="12" font-weight="700" fill="#334155">DATA TYPE</text>
+      <text x="440" y="89" font-size="12" font-weight="700" fill="#334155">CONSTRAINTS / NOTES</text>
+
+      <!-- Attributes Rows -->
+      <g id="row_AlumniProfile__id">
+        <rect x="0" y="102" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="138" x2="640" y2="138" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="16" y="109" width="32" height="22" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.2"/>
+        <text x="32" y="124" font-size="11" font-weight="800" fill="#92400E" text-anchor="middle">PK</text>
+        <text x="95" y="125" font-size="14.5" font-weight="700" fill="#0F172A">_id</text>
+        <text x="320" y="125" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="125" font-size="13" font-weight="500" fill="#475569">Primary Key</text>
+      </g>
+      <g id="row_AlumniProfile_user">
+        <rect x="0" y="138" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="174" x2="640" y2="174" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="145" width="56" height="22" rx="4" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.2"/>
+        <text x="42" y="160" font-size="10.5" font-weight="800" fill="#5B21B6" text-anchor="middle">FK/UQ</text>
+        <text x="95" y="161" font-size="14.5" font-weight="700" fill="#0F172A">user</text>
+        <text x="320" y="161" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="161" font-size="13" font-weight="500" fill="#475569">Ref -> User (Alumni Role, 1:1)</text>
+      </g>
+      <g id="row_AlumniProfile_institute">
+        <rect x="0" y="174" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="210" x2="640" y2="210" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="181" width="32" height="22" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+        <text x="30" y="196" font-size="10.5" font-weight="800" fill="#1E40AF" text-anchor="middle">FK</text>
+        <text x="95" y="197" font-size="14.5" font-weight="700" fill="#0F172A">institute</text>
+        <text x="320" y="197" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="197" font-size="13" font-weight="500" fill="#475569">Ref -> Institute (Alma Mater)</text>
+      </g>
+      <g id="row_AlumniProfile_currentCompany__currentRole">
+        <rect x="0" y="210" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="246" x2="640" y2="246" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="233" font-size="14.5" font-weight="600" fill="#1E293B">currentCompany, currentRole</text>
+        <text x="320" y="233" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="233" font-size="13" font-weight="500" fill="#475569">Current Professional Title</text>
+      </g>
+      <g id="row_AlumniProfile_experienceYears">
+        <rect x="0" y="246" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="282" x2="640" y2="282" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="269" font-size="14.5" font-weight="600" fill="#1E293B">experienceYears</text>
+        <text x="320" y="269" font-size="13.5" font-weight="600" fill="#0369A1">Number</text>
+        <text x="440" y="269" font-size="13" font-weight="500" fill="#475569">Total Industry Experience</text>
+      </g>
+      <g id="row_AlumniProfile_verificationStatus">
+        <rect x="0" y="282" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="318" x2="640" y2="318" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="305" font-size="14.5" font-weight="600" fill="#1E293B">verificationStatus</text>
+        <text x="320" y="305" font-size="13.5" font-weight="600" fill="#0369A1">Enum</text>
+        <text x="440" y="305" font-size="13" font-weight="500" fill="#475569">PENDING | VERIFIED | REJECTED</text>
+      </g>
+      <g id="row_AlumniProfile_verifiedBy">
+        <rect x="0" y="318" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="354" x2="640" y2="354" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="325" width="32" height="22" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+        <text x="30" y="340" font-size="10.5" font-weight="800" fill="#1E40AF" text-anchor="middle">FK</text>
+        <text x="95" y="341" font-size="14.5" font-weight="700" fill="#0F172A">verifiedBy</text>
+        <text x="320" y="341" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="341" font-size="13" font-weight="500" fill="#475569">Ref -> User (Institute Admin)</text>
+      </g>
+    </g>
+
+    <!-- Entity Card: ConnectionRequest -->
+    <g id="entity_ConnectionRequest" transform="translate(160, 1150)">
+      <!-- Container Box -->
+      <rect x="0" y="0" width="640" height="334" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      
+      <!-- Card Title Bar -->
+      <path d="M 0 6 Q 0 0 6 0 L 634 0 Q 640 0 640 6 L 640 66 L 0 66 Z" fill="#581C87" />
+      <text x="22" y="34" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">CONNECTION_REQUEST</text>
+      <text x="22" y="54" font-size="12.5" font-weight="500" fill="#E2E8F0" opacity="0.95">Associative Networking Entity (M:N) • [connectionrequests]</text>
+
+      <!-- Table Column Headers -->
+      <rect x="0" y="66" width="640" height="36" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="20" y="89" font-size="12" font-weight="700" fill="#334155">KEY</text>
+      <text x="95" y="89" font-size="12" font-weight="700" fill="#334155">ATTRIBUTE NAME</text>
+      <text x="320" y="89" font-size="12" font-weight="700" fill="#334155">DATA TYPE</text>
+      <text x="440" y="89" font-size="12" font-weight="700" fill="#334155">CONSTRAINTS / NOTES</text>
+
+      <!-- Attributes Rows -->
+      <g id="row_ConnectionRequest__id">
+        <rect x="0" y="102" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="138" x2="640" y2="138" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="16" y="109" width="32" height="22" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.2"/>
+        <text x="32" y="124" font-size="11" font-weight="800" fill="#92400E" text-anchor="middle">PK</text>
+        <text x="95" y="125" font-size="14.5" font-weight="700" fill="#0F172A">_id</text>
+        <text x="320" y="125" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="125" font-size="13" font-weight="500" fill="#475569">Primary Key</text>
+      </g>
+      <g id="row_ConnectionRequest_student">
+        <rect x="0" y="138" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="174" x2="640" y2="174" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="145" width="32" height="22" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+        <text x="30" y="160" font-size="10.5" font-weight="800" fill="#1E40AF" text-anchor="middle">FK</text>
+        <text x="95" y="161" font-size="14.5" font-weight="700" fill="#0F172A">student</text>
+        <text x="320" y="161" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="161" font-size="13" font-weight="500" fill="#475569">Ref -> User (Student Requester)</text>
+      </g>
+      <g id="row_ConnectionRequest_alumni">
+        <rect x="0" y="174" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="210" x2="640" y2="210" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="181" width="32" height="22" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+        <text x="30" y="196" font-size="10.5" font-weight="800" fill="#1E40AF" text-anchor="middle">FK</text>
+        <text x="95" y="197" font-size="14.5" font-weight="700" fill="#0F172A">alumni</text>
+        <text x="320" y="197" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="197" font-size="13" font-weight="500" fill="#475569">Ref -> User (Target Alumni)</text>
+      </g>
+      <g id="row_ConnectionRequest_institute">
+        <rect x="0" y="210" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="246" x2="640" y2="246" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="217" width="32" height="22" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+        <text x="30" y="232" font-size="10.5" font-weight="800" fill="#1E40AF" text-anchor="middle">FK</text>
+        <text x="95" y="233" font-size="14.5" font-weight="700" fill="#0F172A">institute</text>
+        <text x="320" y="233" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="233" font-size="13" font-weight="500" fill="#475569">Ref -> Institute (Tenancy Scoping)</text>
+      </g>
+      <g id="row_ConnectionRequest_status">
+        <rect x="0" y="246" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="282" x2="640" y2="282" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="269" font-size="14.5" font-weight="600" fill="#1E293B">status</text>
+        <text x="320" y="269" font-size="13.5" font-weight="600" fill="#0369A1">Enum</text>
+        <text x="440" y="269" font-size="13" font-weight="500" fill="#475569">PENDING | ACCEPTED | REJECTED</text>
+      </g>
+      <g id="row_ConnectionRequest_message">
+        <rect x="0" y="282" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="318" x2="640" y2="318" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="305" font-size="14.5" font-weight="600" fill="#1E293B">message</text>
+        <text x="320" y="305" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="305" font-size="13" font-weight="500" fill="#475569">Introduction Note</text>
+      </g>
+    </g>
+
+    <!-- Entity Card: Opportunity -->
+    <g id="entity_Opportunity" transform="translate(1400, 1150)">
+      <!-- Container Box -->
+      <rect x="0" y="0" width="640" height="370" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      
+      <!-- Card Title Bar -->
+      <path d="M 0 6 Q 0 0 6 0 L 634 0 Q 640 0 640 6 L 640 66 L 0 66 Z" fill="#065F46" />
+      <text x="22" y="34" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">OPPORTUNITY</text>
+      <text x="22" y="54" font-size="12.5" font-weight="500" fill="#E2E8F0" opacity="0.95">Jobs, Internships & Alumni Referrals • [opportunities]</text>
+
+      <!-- Table Column Headers -->
+      <rect x="0" y="66" width="640" height="36" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="20" y="89" font-size="12" font-weight="700" fill="#334155">KEY</text>
+      <text x="95" y="89" font-size="12" font-weight="700" fill="#334155">ATTRIBUTE NAME</text>
+      <text x="320" y="89" font-size="12" font-weight="700" fill="#334155">DATA TYPE</text>
+      <text x="440" y="89" font-size="12" font-weight="700" fill="#334155">CONSTRAINTS / NOTES</text>
+
+      <!-- Attributes Rows -->
+      <g id="row_Opportunity__id">
+        <rect x="0" y="102" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="138" x2="640" y2="138" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="16" y="109" width="32" height="22" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.2"/>
+        <text x="32" y="124" font-size="11" font-weight="800" fill="#92400E" text-anchor="middle">PK</text>
+        <text x="95" y="125" font-size="14.5" font-weight="700" fill="#0F172A">_id</text>
+        <text x="320" y="125" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="125" font-size="13" font-weight="500" fill="#475569">Primary Key</text>
+      </g>
+      <g id="row_Opportunity_postedBy">
+        <rect x="0" y="138" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="174" x2="640" y2="174" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="145" width="32" height="22" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+        <text x="30" y="160" font-size="10.5" font-weight="800" fill="#1E40AF" text-anchor="middle">FK</text>
+        <text x="95" y="161" font-size="14.5" font-weight="700" fill="#0F172A">postedBy</text>
+        <text x="320" y="161" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="161" font-size="13" font-weight="500" fill="#475569">Ref -> User (Alumni / Admin)</text>
+      </g>
+      <g id="row_Opportunity_institute">
+        <rect x="0" y="174" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="210" x2="640" y2="210" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="14" y="181" width="32" height="22" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+        <text x="30" y="196" font-size="10.5" font-weight="800" fill="#1E40AF" text-anchor="middle">FK</text>
+        <text x="95" y="197" font-size="14.5" font-weight="700" fill="#0F172A">institute</text>
+        <text x="320" y="197" font-size="13.5" font-weight="600" fill="#0369A1">ObjectId</text>
+        <text x="440" y="197" font-size="13" font-weight="500" fill="#475569">Ref -> Institute (Tenancy Scoping)</text>
+      </g>
+      <g id="row_Opportunity_title__company">
+        <rect x="0" y="210" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="246" x2="640" y2="246" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="233" font-size="14.5" font-weight="600" fill="#1E293B">title, company</text>
+        <text x="320" y="233" font-size="13.5" font-weight="600" fill="#0369A1">String</text>
+        <text x="440" y="233" font-size="13" font-weight="500" fill="#475569">Position & Organization Name</text>
+      </g>
+      <g id="row_Opportunity_type__mode">
+        <rect x="0" y="246" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="282" x2="640" y2="282" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="269" font-size="14.5" font-weight="600" fill="#1E293B">type, mode</text>
+        <text x="320" y="269" font-size="13.5" font-weight="600" fill="#0369A1">Enum</text>
+        <text x="440" y="269" font-size="13" font-weight="500" fill="#475569">INTERNSHIP / JOB • REMOTE / ONSITE</text>
+      </g>
+      <g id="row_Opportunity_deadline">
+        <rect x="0" y="282" width="640" height="36" fill="#F8FAFC"/>
+        <line x1="0" y1="318" x2="640" y2="318" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="305" font-size="14.5" font-weight="600" fill="#1E293B">deadline</text>
+        <text x="320" y="305" font-size="13.5" font-weight="600" fill="#0369A1">Date</text>
+        <text x="440" y="305" font-size="13" font-weight="500" fill="#475569">Application Closing Date</text>
+      </g>
+      <g id="row_Opportunity_status">
+        <rect x="0" y="318" width="640" height="36" fill="#FFFFFF"/>
+        <line x1="0" y1="354" x2="640" y2="354" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="95" y="341" font-size="14.5" font-weight="600" fill="#1E293B">status</text>
+        <text x="320" y="341" font-size="13.5" font-weight="600" fill="#0369A1">Enum</text>
+        <text x="440" y="341" font-size="13" font-weight="500" fill="#475569">PENDING | APPROVED | CLOSED</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== SUMMARY FOOTER & LEGEND ==================== -->
+  <g id="legendFooter" transform="translate(160, 1530)">
+    <rect x="0" y="0" width="1880" height="98" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+    
+    <text x="24" y="28" font-size="13" font-weight="700" fill="#0F172A">KEY CONSTRAINTS &amp; CARDINALITY SUMMARY:</text>
+    <text x="24" y="52" font-size="12" font-weight="500" fill="#334155">• <tspan font-weight="700">1 : N (One-to-Many):</tspan> An Institute hosts many Users, Students, Alumni, and Opportunities.</text>
+    <text x="24" y="74" font-size="12" font-weight="500" fill="#334155">• <tspan font-weight="700">1 : 1 (One-to-One):</tspan> Each User account has strictly one StudentProfile or AlumniProfile (enforced by unique index on user_id).</text>
+
+    <text x="780" y="28" font-size="13" font-weight="700" fill="#0F172A">NETWORKING &amp; SECURITY:</text>
+    <text x="780" y="52" font-size="12" font-weight="500" fill="#334155">• <tspan font-weight="700">M : N Relationship:</tspan> Mediated by ConnectionRequest associative entity linking Student User &amp; Alumni User.</text>
+    <text x="780" y="74" font-size="12" font-weight="500" fill="#334155">• <tspan font-weight="700">Verification Gate:</tspan> AlumniProfile must have verificationStatus = 'VERIFIED' (approved by Admin) for discovery.</text>
+
+    <text x="1560" y="28" font-size="13" font-weight="700" fill="#0F172A">ACADEMIC AUDIT:</text>
+    <text x="1560" y="52" font-size="12" font-weight="500" fill="#475569">MERN Stack Architecture</text>
+    <text x="1560" y="74" font-size="12" font-weight="500" fill="#475569">B.Tech Project Report Specification</text>
+  </g>
+</svg>
