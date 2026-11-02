@@ -1,3 +1,4 @@
+import { MemberAvatar } from '../../components/ui/CommunityCards.jsx';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getStudentAlumniDetailRequest } from '../../api/studentAlumni.js';
@@ -88,9 +89,13 @@ function StudentAlumniDetailPage() {
             }
           : current
       );
-      setSuccessMessage(response.message || 'Connection request sent successfully.');
+      setSuccessMessage(
+        response.message || 'Connection request sent successfully.'
+      );
     } catch (error) {
-      setErrorMessage(error.userMessage || 'Unable to send connection request.');
+      setErrorMessage(
+        error.userMessage || 'Unable to send connection request.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -110,14 +115,18 @@ function StudentAlumniDetailPage() {
         message: guidanceForm.message
       });
 
-      setGuidanceSuccessMessage(response.message || 'Guidance request sent successfully.');
+      setGuidanceSuccessMessage(
+        response.message || 'Guidance request sent successfully.'
+      );
       setGuidanceForm({
         type: 'MENTORSHIP',
         title: '',
         message: ''
       });
     } catch (error) {
-      setGuidanceErrorMessage(error.userMessage || 'Unable to send guidance request.');
+      setGuidanceErrorMessage(
+        error.userMessage || 'Unable to send guidance request.'
+      );
     } finally {
       setIsGuidanceSubmitting(false);
     }
@@ -128,7 +137,7 @@ function StudentAlumniDetailPage() {
       <PageHeader
         eyebrow="STUDENT"
         title="Alumni details"
-        description="Review verified alumni information from your institute before future connection and mentorship features are added."
+        description="Get to know the person behind the experience. A thoughtful introduction can be the start of something meaningful."
       />
 
       <Link
@@ -138,7 +147,7 @@ function StudentAlumniDetailPage() {
         Back to search
       </Link>
 
-      <section className="max-w-3xl surface-card p-6 md:p-8">
+      <section className="alumni-detail surface-card p-6 md:p-8">
         {isLoading ? (
           <div className="p-4 text-body text-text-secondary">
             Loading alumni details...
@@ -148,45 +157,129 @@ function StudentAlumniDetailPage() {
             {errorMessage}
           </p>
         ) : alumni ? (
-          <div className="space-y-8">
-            <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="detail-grid">
+            <div className="detail-identity flex flex-wrap items-center justify-between gap-4">
               <div>
-                <h2 className="text-display font-semibold text-text-primary">{alumni.user?.name}</h2>
-                <p className="mt-2 text-body text-text-secondary">{alumni.user?.email}</p>
+                <div className="mb-5">
+                  <MemberAvatar name={alumni.user?.name} large />
+                </div>
+                <h2 className="text-display font-semibold text-text-primary">
+                  {alumni.user?.name}
+                </h2>
+                <p className="mt-2 text-sm text-primary">
+                  {alumni.currentRole} at {alumni.currentCompany}
+                </p>
+                <p className="mt-2 text-body text-text-secondary">
+                  {alumni.user?.email}
+                </p>
               </div>
               <span className="inline-flex rounded-full border border-border bg-bg-secondary px-3 py-1 text-caption font-semibold uppercase tracking-wider text-text-primary">
                 {alumni.verificationStatus}
               </span>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2 text-body text-text-secondary">
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Branch</span> <span className="font-medium text-text-primary">{alumni.branch}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Batch</span> <span className="font-medium text-text-primary">{alumni.batch}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Company</span> <span className="font-medium text-text-primary">{alumni.currentCompany}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Role</span> <span className="font-medium text-text-primary">{alumni.currentRole}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Experience</span> <span className="font-medium text-text-primary">{alumni.experienceYears} years</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Domain</span> <span className="font-medium text-text-primary">{alumni.domain || 'Not provided'}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Location</span> <span className="font-medium text-text-primary">{alumni.location || 'Not provided'}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Referral support</span> <span className="font-medium text-text-primary">{alumni.canProvideReferral ? 'Yes' : 'No'}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Mentoring</span> <span className="font-medium text-text-primary">{alumni.canMentor ? 'Yes' : 'No'}</span></p>
+            <div className="detail-facts grid gap-4 sm:grid-cols-2 text-sm text-text-secondary">
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Branch
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {alumni.branch}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Batch
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {alumni.batch}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Company
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {alumni.currentCompany}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Role
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {alumni.currentRole}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Experience
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {alumni.experienceYears} years
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Domain
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {alumni.domain || 'Not provided'}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Location
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {alumni.location || 'Not provided'}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Referral support
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {alumni.canProvideReferral ? 'Yes' : 'No'}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Mentoring
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {alumni.canMentor ? 'Yes' : 'No'}
+                </span>
+              </p>
             </div>
 
             <div>
-              <h3 className="text-badge font-bold uppercase tracking-wider text-text-muted block">Skills</h3>
-              <p className="mt-2 text-body font-medium text-text-primary">{alumni.skills?.join(', ') || 'Not provided'}</p>
+              <h3 className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                Skills
+              </h3>
+              <p className="mt-2 text-body font-medium text-text-primary">
+                {alumni.skills?.join(', ') || 'Not provided'}
+              </p>
             </div>
 
             <div>
-              <h3 className="text-badge font-bold uppercase tracking-wider text-text-muted block">Bio</h3>
-              <p className="mt-2 text-body leading-relaxed text-text-secondary">{alumni.bio || 'No bio provided.'}</p>
+              <h3 className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                Bio
+              </h3>
+              <p className="mt-2 text-body leading-relaxed text-text-secondary">
+                {alumni.bio || 'No bio provided.'}
+              </p>
             </div>
 
             <div className="content-card p-6">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <h3 className="text-section font-semibold text-text-primary">Connection request</h3>
+                  <h3 className="text-section font-semibold text-text-primary">
+                    Connection request
+                  </h3>
                   <p className="mt-2 text-body text-text-secondary">
-                    Send a simple introduction to start a connection with this verified alumni.
+                    Send a simple introduction to start a connection with this
+                    verified alumni.
                   </p>
                 </div>
                 {alumni.connectionRequest ? (
@@ -200,6 +293,7 @@ function StudentAlumniDetailPage() {
 
               <form onSubmit={handleSubmitRequest} className="mt-6">
                 <textarea
+                  aria-label="Your introduction"
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
                   rows="4"
@@ -209,13 +303,21 @@ function StudentAlumniDetailPage() {
                 />
 
                 {errorMessage ? (
-                  <p className="alert-error mt-4" role="alert" aria-live="polite">
+                  <p
+                    className="alert-error mt-4"
+                    role="alert"
+                    aria-live="polite"
+                  >
                     {errorMessage}
                   </p>
                 ) : null}
 
                 {successMessage ? (
-                  <p className="alert-success mt-4" role="alert" aria-live="polite">
+                  <p
+                    className="alert-success mt-4"
+                    role="alert"
+                    aria-live="polite"
+                  >
                     {successMessage}
                   </p>
                 ) : null}
@@ -223,7 +325,12 @@ function StudentAlumniDetailPage() {
                 {alumni.connectionRequest ? (
                   <p className="mt-4 text-body text-text-secondary">
                     You already sent a connection request on{' '}
-                    <span className="font-medium text-text-primary">{new Date(alumni.connectionRequest.createdAt).toLocaleDateString()}</span>.
+                    <span className="font-medium text-text-primary">
+                      {new Date(
+                        alumni.connectionRequest.createdAt
+                      ).toLocaleDateString()}
+                    </span>
+                    .
                   </p>
                 ) : null}
 
@@ -232,7 +339,11 @@ function StudentAlumniDetailPage() {
                   disabled={isSubmitting || Boolean(alumni.connectionRequest)}
                   className="btn-primary mt-6"
                 >
-                  {alumni.connectionRequest ? 'Connection Request Sent' : isSubmitting ? 'Sending...' : 'Send Connection Request'}
+                  {alumni.connectionRequest
+                    ? 'Connection Request Sent'
+                    : isSubmitting
+                      ? 'Sending...'
+                      : 'Send Connection Request'}
                 </button>
               </form>
             </div>
@@ -243,11 +354,15 @@ function StudentAlumniDetailPage() {
                   Guidance or referral request
                 </h3>
                 <p className="mt-2 text-body text-text-secondary">
-                  Ask this alumni for mentorship, referral support, project guidance, or broader career help.
+                  Ask this alumni for mentorship, referral support, project
+                  guidance, or broader career help.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmitGuidanceRequest} className="mt-6 space-y-6">
+              <form
+                onSubmit={handleSubmitGuidanceRequest}
+                className="mt-6 space-y-6"
+              >
                 <div>
                   <label htmlFor="guidance-type">Request type</label>
                   <select

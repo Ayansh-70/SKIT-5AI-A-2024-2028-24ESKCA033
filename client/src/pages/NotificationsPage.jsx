@@ -1,3 +1,4 @@
+import { Bell } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import PageHeader from '../components/ui/PageHeader.jsx';
 import EmptyState from '../components/ui/EmptyState.jsx';
@@ -50,14 +51,20 @@ function NotificationsPage() {
 
       if (notification) {
         setNotifications((current) =>
-          current.map((item) => (item._id === notification._id ? notification : item))
+          current.map((item) =>
+            item._id === notification._id ? notification : item
+          )
         );
       }
 
       await refreshNotificationCount();
-      setSuccessMessage(response.message || 'Notification marked as read successfully.');
+      setSuccessMessage(
+        response.message || 'Notification marked as read successfully.'
+      );
     } catch (error) {
-      setErrorMessage(error.userMessage || 'Unable to mark notification as read.');
+      setErrorMessage(
+        error.userMessage || 'Unable to mark notification as read.'
+      );
     } finally {
       setActiveId('');
     }
@@ -70,11 +77,17 @@ function NotificationsPage() {
 
     try {
       const response = await markAllNotificationsAsReadRequest();
-      setNotifications((current) => current.map((item) => ({ ...item, isRead: true })));
+      setNotifications((current) =>
+        current.map((item) => ({ ...item, isRead: true }))
+      );
       await refreshNotificationCount();
-      setSuccessMessage(response.message || 'All notifications marked as read successfully.');
+      setSuccessMessage(
+        response.message || 'All notifications marked as read successfully.'
+      );
     } catch (error) {
-      setErrorMessage(error.userMessage || 'Unable to mark all notifications as read.');
+      setErrorMessage(
+        error.userMessage || 'Unable to mark all notifications as read.'
+      );
     } finally {
       setActiveId('');
     }
@@ -87,9 +100,13 @@ function NotificationsPage() {
 
     try {
       const response = await deleteNotificationRequest(notificationId);
-      setNotifications((current) => current.filter((item) => item._id !== notificationId));
+      setNotifications((current) =>
+        current.filter((item) => item._id !== notificationId)
+      );
       await refreshNotificationCount();
-      setSuccessMessage(response.message || 'Notification deleted successfully.');
+      setSuccessMessage(
+        response.message || 'Notification deleted successfully.'
+      );
     } catch (error) {
       setErrorMessage(error.userMessage || 'Unable to delete notification.');
     } finally {
@@ -102,15 +119,18 @@ function NotificationsPage() {
       <PageHeader
         eyebrow="NOTIFICATIONS"
         title="Notifications"
-        description="Review automated updates created by connection, guidance, opportunity, announcement, event, and verification actions."
+        description="A new connection, a reply, a next step. Keep up with what is happening in your community."
       />
 
       <section className="surface-card p-6 md:p-8">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-sm text-slate-500">
-              {notifications.filter((item) => !item.isRead).length} unread notification
-              {notifications.filter((item) => !item.isRead).length === 1 ? '' : 's'}
+            <p className="text-sm text-text-muted">
+              {notifications.filter((item) => !item.isRead).length} unread
+              notification
+              {notifications.filter((item) => !item.isRead).length === 1
+                ? ''
+                : 's'}
             </p>
           </div>
           <button
@@ -126,7 +146,9 @@ function NotificationsPage() {
         <div className="mb-6 space-y-3">
           {errorMessage ? <p className="alert-error">{errorMessage}</p> : null}
 
-          {successMessage ? <p className="alert-success">{successMessage}</p> : null}
+          {successMessage ? (
+            <p className="alert-success">{successMessage}</p>
+          ) : null}
         </div>
 
         {isLoading ? (
@@ -137,28 +159,37 @@ function NotificationsPage() {
             description="New connection, guidance, opportunity, announcement, and event updates will appear here."
           />
         ) : (
-          <div className="space-y-4">
+          <div className="divide-y divide-border">
             {notifications.map((notification) => (
               <article
                 key={notification._id}
-                className={`content-card p-6 flex flex-col ${
-                  notification.isRead
-                    ? ''
-                    : 'border-l-4 border-l-brand-600'
+                className={`p-5 sm:p-6 flex flex-col ${
+                  notification.isRead ? 'bg-surface' : 'bg-bg-secondary/60'
                 }`}
               >
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-2">
                   <div>
-                    <h2 className="text-section font-semibold text-text-primary">{notification.title}</h2>
-                    <p className="mt-1 text-body leading-relaxed text-text-secondary">{notification.message}</p>
+                    <h2 className="flex items-center gap-3 text-base font-semibold text-text-primary">
+                      <Bell className="h-4 w-4 shrink-0 text-primary" />
+                      {notification.title}
+                    </h2>
+                    <p className="mt-1 text-body leading-relaxed text-text-secondary">
+                      {notification.message}
+                    </p>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex rounded-full border border-border bg-bg-secondary px-3 py-1 text-caption font-semibold uppercase tracking-wider text-text-primary">{notification.type}</span>
-                    <StatusBadge value={notification.isRead ? 'READ' : 'PENDING'} />
+                    <span className="inline-flex rounded-full border border-border bg-bg-secondary px-3 py-1 text-caption font-semibold uppercase tracking-wider text-text-primary">
+                      {notification.type}
+                    </span>
+                    <StatusBadge
+                      value={notification.isRead ? 'READ' : 'PENDING'}
+                    />
                   </div>
                 </div>
 
-                <p className="text-caption font-medium text-text-muted mb-6">{formatDate(notification.createdAt)}</p>
+                <p className="text-caption font-medium text-text-muted mb-6">
+                  {formatDate(notification.createdAt)}
+                </p>
 
                 <div className="flex flex-wrap gap-3 mt-auto">
                   {!notification.isRead ? (
@@ -168,14 +199,16 @@ function NotificationsPage() {
                       onClick={() => handleMarkRead(notification._id)}
                       className="btn-secondary"
                     >
-                      {activeId === notification._id ? 'Processing...' : 'Mark As Read'}
+                      {activeId === notification._id
+                        ? 'Processing...'
+                        : 'Mark As Read'}
                     </button>
                   ) : null}
                   <button
                     type="button"
                     disabled={activeId === notification._id}
                     onClick={() => handleDelete(notification._id)}
-                    className="btn-danger"
+                    className="btn-secondary text-danger"
                   >
                     {activeId === notification._id ? 'Processing...' : 'Delete'}
                   </button>

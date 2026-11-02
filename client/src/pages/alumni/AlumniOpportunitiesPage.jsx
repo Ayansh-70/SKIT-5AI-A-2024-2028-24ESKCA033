@@ -73,7 +73,7 @@ function AlumniOpportunitiesPage() {
         </Link>
       </div>
 
-      <section className="surface-card">
+      <section className="space-y-5">
         {errorMessage ? (
           <p className="alert-error mb-4">
             {errorMessage}
@@ -91,9 +91,9 @@ function AlumniOpportunitiesPage() {
         ) : opportunities.length === 0 ? (
           <EmptyState title="No opportunities posted yet" description="Opportunities you post for institute approval will appear here." />
         ) : (
-          <div className="space-y-4">
+          <div className="grid gap-5 xl:grid-cols-2">
             {opportunities.map((opportunity) => (
-              <article key={opportunity._id} className="content-card p-6 flex flex-col">
+              <article key={opportunity._id} className="opportunity-card">
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                   <div>
                     <h2 className="text-section font-semibold text-text-primary">{opportunity.title}</h2>
@@ -112,7 +112,7 @@ function AlumniOpportunitiesPage() {
                 </div>
 
                 {opportunity.rejectionReason ? (
-                  <p className="mt-6 border-t border-border pt-4 text-sm font-medium text-error">Rejection reason: {opportunity.rejectionReason}</p>
+                  <p className="mt-6 border-t border-border pt-4 text-sm font-medium text-danger">Rejection reason: {opportunity.rejectionReason}</p>
                 ) : null}
 
                 {opportunity.status === 'APPROVED' ? (

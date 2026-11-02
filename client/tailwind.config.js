@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Outfit', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        display: ['DM Sans', 'system-ui', 'sans-serif'],
       },
       colors: {
         bg: {
@@ -51,7 +51,7 @@ export default {
         'card-title': '1.125rem', // 18px
         'section': '1.5rem',      // 24px
         'page': '2rem',           // 32px
-        'display': '3rem',        // 48px
+        'display': 'clamp(2rem, 4vw, 3rem)',        // 48px
       },
       boxShadow: {
         'level-1': '0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1)',

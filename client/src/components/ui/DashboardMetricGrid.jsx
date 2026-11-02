@@ -1,25 +1,33 @@
 function DashboardMetricGrid({ metrics }) {
-  if (!metrics?.length) {
-    return null;
-  }
-
+  if (!metrics?.length) return null;
   return (
-    <section className="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      {metrics.map((metric) => (
-        <article key={metric.label} className="surface-card">
-          <p className="text-caption font-semibold uppercase tracking-wider text-text-secondary">
-            {metric.label}
-          </p>
-          <div className="mt-4 flex items-end justify-between gap-4">
-            <p className="text-page font-bold tracking-tight text-text-primary">{metric.value}</p>
-            <span className="rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-badge font-semibold text-primary">
-              {metric.caption}
-            </span>
+    <section
+      aria-label="Workspace overview"
+      className="collective-metrics"
+    >
+      {metrics.map((metric, index) => (
+        <article
+          key={metric.label}
+          className="collective-metric"
+        >
+          <div className="flex items-center justify-between gap-2">
+            <p className="text-xs font-medium text-text-secondary">
+              {metric.label}
+            </p>
+            <span className="text-[10px] text-text-muted">0{index + 1}</span>
           </div>
+          <p
+            className={`my-4 break-words font-display font-medium leading-tight tracking-tight ${String(metric.value).length > 10 ? 'text-xl' : 'text-3xl'}`}
+          >
+            {metric.value}
+          </p>
+          <p className="flex items-center gap-2 text-[11px] text-text-secondary">
+            <span className="h-1 w-4 rounded-full bg-primary/50" />
+            {metric.caption}
+          </p>
         </article>
       ))}
     </section>
   );
 }
-
 export default DashboardMetricGrid;

@@ -18,7 +18,9 @@ function StudentOpportunityDetailPage() {
         const response = await getStudentOpportunityByIdRequest(id);
         setOpportunity(response.data?.opportunity || null);
       } catch (error) {
-        setErrorMessage(error.userMessage || 'Unable to load opportunity details.');
+        setErrorMessage(
+          error.userMessage || 'Unable to load opportunity details.'
+        );
       } finally {
         setIsLoading(false);
       }
@@ -42,46 +44,100 @@ function StudentOpportunityDetailPage() {
         Back to opportunities
       </Link>
 
-      <section className="max-w-3xl surface-card p-6 md:p-8">
+      <section className="surface-card p-6 md:p-8">
         {isLoading ? (
           <div className="p-4 text-body text-text-secondary">
             Loading opportunity details...
           </div>
         ) : errorMessage ? (
-          <p className="alert-error">
-            {errorMessage}
-          </p>
+          <p className="alert-error">{errorMessage}</p>
         ) : opportunity ? (
           <div className="space-y-8">
-            <div>
-              <h2 className="text-display font-semibold text-text-primary">{opportunity.title}</h2>
+            <div className="border-b border-border pb-7">
+              <h2 className="text-display font-semibold text-text-primary">
+                {opportunity.title}
+              </h2>
               <p className="mt-2 text-body text-text-secondary">
                 {opportunity.role} at {opportunity.company}
               </p>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2 text-body text-text-secondary">
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Type</span> <span className="font-medium text-text-primary">{opportunity.type}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Mode</span> <span className="font-medium text-text-primary">{opportunity.mode}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Location</span> <span className="font-medium text-text-primary">{opportunity.location}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Deadline</span> <span className="font-medium text-text-primary">{new Date(opportunity.deadline).toLocaleDateString()}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Posted by</span> <span className="font-medium text-text-primary">{opportunity.postedBy?.name}</span></p>
-              <p><span className="text-badge font-bold uppercase tracking-wider text-text-muted block">Posted on</span> <span className="font-medium text-text-primary">{new Date(opportunity.createdAt).toLocaleDateString()}</span></p>
+            <div className="grid gap-6 rounded-xl border border-border bg-bg-secondary p-6 sm:grid-cols-2 lg:grid-cols-3 text-sm text-text-secondary">
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Type
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {opportunity.type}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Mode
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {opportunity.mode}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Location
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {opportunity.location}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Deadline
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {new Date(opportunity.deadline).toLocaleDateString()}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Posted by
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {opportunity.postedBy?.name}
+                </span>
+              </p>
+              <p>
+                <span className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                  Posted on
+                </span>{' '}
+                <span className="font-medium text-text-primary">
+                  {new Date(opportunity.createdAt).toLocaleDateString()}
+                </span>
+              </p>
             </div>
 
             <div>
-              <h3 className="text-badge font-bold uppercase tracking-wider text-text-muted block">Description</h3>
-              <p className="mt-2 text-body leading-relaxed text-text-secondary">{opportunity.description}</p>
+              <h3 className="text-lg font-semibold text-text-primary">
+                About the opportunity
+              </h3>
+              <p className="mt-2 text-body leading-relaxed text-text-secondary">
+                {opportunity.description}
+              </p>
             </div>
 
             <div>
-              <h3 className="text-badge font-bold uppercase tracking-wider text-text-muted block">Eligibility</h3>
-              <p className="mt-2 text-body leading-relaxed text-text-secondary">{opportunity.eligibility}</p>
+              <h3 className="text-lg font-semibold text-text-primary">
+                Who this is for
+              </h3>
+              <p className="mt-2 text-body leading-relaxed text-text-secondary">
+                {opportunity.eligibility}
+              </p>
             </div>
 
             <div>
-              <h3 className="text-badge font-bold uppercase tracking-wider text-text-muted block">Skills required</h3>
-              <p className="mt-2 text-body font-medium text-text-primary">{opportunity.skillsRequired?.join(', ') || 'Not provided'}</p>
+              <h3 className="text-badge font-bold uppercase tracking-wider text-text-muted block">
+                Skills required
+              </h3>
+              <p className="mt-2 text-body font-medium text-text-primary">
+                {opportunity.skillsRequired?.join(', ') || 'Not provided'}
+              </p>
             </div>
 
             <a

@@ -1,3 +1,4 @@
+import { BulletinCard } from '../../components/ui/CommunityCards.jsx';
 import { useEffect, useState } from 'react';
 import PageHeader from '../../components/ui/PageHeader.jsx';
 import EmptyState from '../../components/ui/EmptyState.jsx';
@@ -29,8 +30,8 @@ function AlumniAnnouncementsPage() {
 
   return (
     <div>
-      <PageHeader eyebrow="ALUMNI" title="Announcements" description="View active institute announcements meant for alumni." />
-      <section className="surface-card p-6 md:p-8">
+      <PageHeader eyebrow="ALUMNI" title="The campus bulletin." description="View active institute announcements meant for alumni." />
+      <section className="space-y-5">
         {errorMessage ? <p className="alert-error mb-4">{errorMessage}</p> : null}
         {isLoading ? (
           <LoadingState message="Loading announcements..." />
@@ -40,16 +41,9 @@ function AlumniAnnouncementsPage() {
             description="Institute announcements for alumni will appear here when they are active."
           />
         ) : (
-          <div className="space-y-4">
+          <div className="grid items-start gap-5 lg:grid-cols-2">
             {announcements.map((announcement) => (
-              <article key={announcement._id} className="content-card">
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <h2 className="text-lg font-semibold text-slate-950">{announcement.title}</h2>
-                  <span className="status-badge border-slate-200 bg-white dark:bg-slate-900 dark:border-slate-800 text-slate-700">{announcement.category}</span>
-                </div>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{announcement.message}</p>
-                <p className="mt-3 text-xs text-slate-500">Posted on {new Date(announcement.createdAt).toLocaleDateString()}</p>
-              </article>
+              <BulletinCard key={announcement._id} announcement={announcement} />
             ))}
           </div>
         )}

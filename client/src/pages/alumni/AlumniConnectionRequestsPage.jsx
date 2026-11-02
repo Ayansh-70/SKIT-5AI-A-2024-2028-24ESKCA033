@@ -1,3 +1,4 @@
+import { MemberAvatar } from '../../components/ui/CommunityCards.jsx';
 import { useEffect, useState } from 'react';
 import PageHeader from '../../components/ui/PageHeader.jsx';
 import EmptyState from '../../components/ui/EmptyState.jsx';
@@ -73,7 +74,7 @@ function AlumniConnectionRequestsPage() {
         description="Review student connection requests from your institute and accept or reject them."
       />
 
-      <section className="surface-card p-6 md:p-8">
+      <section className="space-y-5">
         {errorMessage ? (
           <p className="alert-error mb-4">{errorMessage}</p>
         ) : null}
@@ -92,10 +93,10 @@ function AlumniConnectionRequestsPage() {
         ) : (
           <div className="space-y-4">
             {requests.map((request) => (
-              <article key={request._id} className="content-card p-6 flex flex-col">
+              <article key={request._id} className="request-card flex flex-col">
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                   <div>
-                    <h2 className="text-section font-semibold text-text-primary">{request.student?.name}</h2>
+                    <h2 className="flex items-center gap-3 text-xl font-semibold text-text-primary"><MemberAvatar name={request.student?.name} />{request.student?.name}</h2>
                     <p className="mt-1 text-caption text-text-secondary">{request.student?.email}</p>
                   </div>
                   <StatusBadge value={request.status} />

@@ -1,5 +1,10 @@
+import { ProfileIdentity } from '../../components/ui/CommunityCards.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { useEffect, useState } from 'react';
-import { getStudentProfileRequest, saveStudentProfileRequest } from '../../api/studentProfiles.js';
+import {
+  getStudentProfileRequest,
+  saveStudentProfileRequest
+} from '../../api/studentProfiles.js';
 import LoadingState from '../../components/ui/LoadingState.jsx';
 import PageHeader from '../../components/ui/PageHeader.jsx';
 
@@ -21,6 +26,7 @@ const INITIAL_FORM_DATA = {
 const formatList = (value) => (Array.isArray(value) ? value.join(', ') : '');
 
 function StudentProfilePage() {
+  const { user } = useAuth();
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -96,7 +102,9 @@ function StudentProfilePage() {
         });
       }
 
-      setSuccessMessage(response.message || 'Student profile saved successfully.');
+      setSuccessMessage(
+        response.message || 'Student profile saved successfully.'
+      );
     } catch (error) {
       setErrorMessage(error.userMessage || 'Unable to save your profile.');
     } finally {
@@ -109,185 +117,205 @@ function StudentProfilePage() {
       <PageHeader
         eyebrow="STUDENT"
         title="My profile"
-        description="Complete your academic and personal profile so your institute can support verified alumni networking later."
+        description="Tell your story. Share what you are learning, where you want to go, and what makes you, you."
       />
 
-      <section className="surface-card max-w-4xl p-6">
-        {isLoading ? (
-          <LoadingState message="Loading your profile..." />
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid gap-6 md:grid-cols-2">
-              <div>
-                <label htmlFor="branch">Branch</label>
-                <input
-                  id="branch"
-                  name="branch"
-                  value={formData.branch}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className="field-control"
-                  placeholder="Computer Science"
-                />
+      <div className="profile-layout">
+        <section className="surface-card min-w-0">
+          {isLoading ? (
+            <LoadingState message="Loading your profile..." />
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <h2 className="section-heading">
+                <span>01</span>Your journey
+              </h2>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label htmlFor="branch">Branch</label>
+                  <input
+                    id="branch"
+                    name="branch"
+                    value={formData.branch}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="field-control"
+                    placeholder="Computer Science"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="batch">Batch</label>
+                  <input
+                    id="batch"
+                    name="batch"
+                    value={formData.batch}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="field-control"
+                    placeholder="2026"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="semester">Semester</label>
+                  <input
+                    id="semester"
+                    name="semester"
+                    value={formData.semester}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="field-control"
+                    placeholder="6"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="rollNumber">Roll number</label>
+                  <input
+                    id="rollNumber"
+                    name="rollNumber"
+                    value={formData.rollNumber}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="field-control"
+                    placeholder="CS2026-014"
+                  />
+                </div>
               </div>
-              <div>
-                <label htmlFor="batch">Batch</label>
-                <input
-                  id="batch"
-                  name="batch"
-                  value={formData.batch}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className="field-control"
-                  placeholder="2026"
-                />
-              </div>
-              <div>
-                <label htmlFor="semester">Semester</label>
-                <input
-                  id="semester"
-                  name="semester"
-                  value={formData.semester}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className="field-control"
-                  placeholder="6"
-                />
-              </div>
-              <div>
-                <label htmlFor="rollNumber">Roll number</label>
-                <input
-                  id="rollNumber"
-                  name="rollNumber"
-                  value={formData.rollNumber}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className="field-control"
-                  placeholder="CS2026-014"
-                />
-              </div>
-            </div>
 
-            <div>
-              <label htmlFor="skills">Skills</label>
-              <input
-                id="skills"
-                name="skills"
-                value={formData.skills}
-                onChange={handleChange}
-                disabled={isSubmitting}
-                className="field-control"
-                placeholder="React, Node.js, MongoDB"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="interests">Interests</label>
-              <input
-                id="interests"
-                name="interests"
-                value={formData.interests}
-                onChange={handleChange}
-                disabled={isSubmitting}
-                className="field-control"
-                placeholder="Web development, AI, product design"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="careerGoals">Career goals</label>
-              <textarea
-                id="careerGoals"
-                name="careerGoals"
-                value={formData.careerGoals}
-                onChange={handleChange}
-                disabled={isSubmitting}
-                rows="3"
-                className="field-control"
-                placeholder="Describe the kind of roles or growth you are aiming for."
-              />
-            </div>
-
-            <div>
-              <label htmlFor="bio">Bio</label>
-              <textarea
-                id="bio"
-                name="bio"
-                value={formData.bio}
-                onChange={handleChange}
-                disabled={isSubmitting}
-                rows="4"
-                className="field-control"
-                placeholder="Write a short introduction."
-              />
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <label htmlFor="location">Location</label>
+                <h2 className="section-heading">
+                  <span>02</span>What you bring
+                </h2>
+                <label htmlFor="skills">Skills</label>
                 <input
-                  id="location"
-                  name="location"
-                  value={formData.location}
+                  id="skills"
+                  name="skills"
+                  value={formData.skills}
                   onChange={handleChange}
                   disabled={isSubmitting}
                   className="field-control"
-                  placeholder="Bengaluru, India"
+                  placeholder="React, Node.js, MongoDB"
                 />
               </div>
-              <div>
-                <label htmlFor="linkedInUrl">LinkedIn URL</label>
-                <input
-                  id="linkedInUrl"
-                  name="linkedInUrl"
-                  value={formData.linkedInUrl}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className="field-control"
-                  placeholder="https://linkedin.com/in/username"
-                />
-              </div>
-              <div>
-                <label htmlFor="githubUrl">GitHub URL</label>
-                <input
-                  id="githubUrl"
-                  name="githubUrl"
-                  value={formData.githubUrl}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className="field-control"
-                  placeholder="https://github.com/username"
-                />
-              </div>
-              <div>
-                <label htmlFor="portfolioUrl">Portfolio URL</label>
-                <input
-                  id="portfolioUrl"
-                  name="portfolioUrl"
-                  value={formData.portfolioUrl}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className="field-control"
-                  placeholder="https://yourportfolio.com"
-                />
-              </div>
-            </div>
 
-            {errorMessage && <p className="alert-error" role="alert" aria-live="polite">{errorMessage}</p>}
-            {successMessage && <p className="alert-success" role="alert" aria-live="polite">{successMessage}</p>}
+              <div>
+                <label htmlFor="interests">Interests</label>
+                <input
+                  id="interests"
+                  name="interests"
+                  value={formData.interests}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
+                  className="field-control"
+                  placeholder="Web development, AI, product design"
+                />
+              </div>
 
-            <div className="pt-2">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-primary"
-              >
-                {isSubmitting ? 'Saving...' : 'Save profile'}
-              </button>
-            </div>
-          </form>
-        )}
-      </section>
+              <div>
+                <label htmlFor="careerGoals">Career goals</label>
+                <textarea
+                  id="careerGoals"
+                  name="careerGoals"
+                  value={formData.careerGoals}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
+                  rows="3"
+                  className="field-control"
+                  placeholder="Describe the kind of roles or growth you are aiming for."
+                />
+              </div>
+
+              <div>
+                <label htmlFor="bio">Bio</label>
+                <textarea
+                  id="bio"
+                  name="bio"
+                  value={formData.bio}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
+                  rows="4"
+                  className="field-control"
+                  placeholder="Write a short introduction."
+                />
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <h2 className="section-heading md:col-span-2">
+                  <span>03</span>Find me beyond campus
+                </h2>
+                <div>
+                  <label htmlFor="location">Location</label>
+                  <input
+                    id="location"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="field-control"
+                    placeholder="Bengaluru, India"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="linkedInUrl">LinkedIn URL</label>
+                  <input
+                    id="linkedInUrl"
+                    name="linkedInUrl"
+                    value={formData.linkedInUrl}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="field-control"
+                    placeholder="https://linkedin.com/in/username"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="githubUrl">GitHub URL</label>
+                  <input
+                    id="githubUrl"
+                    name="githubUrl"
+                    value={formData.githubUrl}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="field-control"
+                    placeholder="https://github.com/username"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="portfolioUrl">Portfolio URL</label>
+                  <input
+                    id="portfolioUrl"
+                    name="portfolioUrl"
+                    value={formData.portfolioUrl}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="field-control"
+                    placeholder="https://yourportfolio.com"
+                  />
+                </div>
+              </div>
+
+              {errorMessage && (
+                <p className="alert-error" role="alert" aria-live="polite">
+                  {errorMessage}
+                </p>
+              )}
+              {successMessage && (
+                <p className="alert-success" role="alert" aria-live="polite">
+                  {successMessage}
+                </p>
+              )}
+
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-primary"
+                >
+                  {isSubmitting ? 'Saving...' : 'Save profile'}
+                </button>
+              </div>
+            </form>
+          )}
+        </section>
+        {!isLoading && <ProfileIdentity user={user} formData={formData} />}
+      </div>
     </div>
   );
 }

@@ -122,7 +122,7 @@ function AlumniDashboardPage() {
       <PageHeader
         eyebrow="ALUMNI"
         title="Alumni dashboard"
-        description="Manage your profile, respond to student outreach, and contribute opportunities and guidance from one polished hub."
+        description="Manage your profile, respond to student outreach, and contribute opportunities and guidance from your institute workspace."
       />
       {errorMessage && (
         <div className="mb-6">

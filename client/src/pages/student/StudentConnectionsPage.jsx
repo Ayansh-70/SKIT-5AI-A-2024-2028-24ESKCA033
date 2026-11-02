@@ -1,3 +1,4 @@
+import { MemberAvatar } from '../../components/ui/CommunityCards.jsx';
 import { useEffect, useState } from 'react';
 import PageHeader from '../../components/ui/PageHeader.jsx';
 import { getStudentConnectionsRequest } from '../../api/studentConnections.js';
@@ -38,7 +39,7 @@ function StudentConnectionsPage() {
         description="Track the connection requests you have sent to verified alumni in your institute."
       />
 
-      <section className="surface-card p-6 md:p-8">
+      <section className="space-y-5">
         {errorMessage ? (
           <p className="alert-error">{errorMessage}</p>
         ) : null}
@@ -55,10 +56,10 @@ function StudentConnectionsPage() {
         ) : (
           <div className="mt-4 space-y-4">
             {requests.map((request) => (
-              <article key={request._id} className="content-card p-6 flex flex-col">
+              <article key={request._id} className="request-card flex flex-col">
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                   <div>
-                    <h2 className="text-section font-semibold text-text-primary">{request.alumni?.name}</h2>
+                    <h2 className="flex items-center gap-3 text-xl font-semibold text-text-primary"><MemberAvatar name={request.alumni?.name} />{request.alumni?.name}</h2>
                     <p className="mt-1 text-caption text-text-secondary">
                       {request.alumniProfile?.currentRole || 'Role not provided'} at{' '}
                       {request.alumniProfile?.currentCompany || 'Company not provided'}
